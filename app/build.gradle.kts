@@ -49,6 +49,12 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    // Retrofit for API calls
+    implementation (libs.retrofit)
+    // Converter for JSON (e.g., Gson, Moshi, etc.)
+    implementation (libs.converter.gson)
+    // OkHttp logging interceptor
+    implementation (libs.logging.interceptor)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
