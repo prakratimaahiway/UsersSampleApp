@@ -2,11 +2,13 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.dagger.hilt.android")
+    kotlin("kapt")
 }
 
 android {
     namespace = "com.maahiway.userssampleapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.maahiway.userssampleapp"
@@ -37,6 +39,7 @@ android {
     buildFeatures {
         compose = true
     }
+
 }
 
 dependencies {
@@ -53,8 +56,15 @@ dependencies {
     implementation (libs.retrofit)
     // Converter for JSON (e.g., Gson, Moshi, etc.)
     implementation (libs.converter.gson)
+
     // OkHttp logging interceptor
     implementation (libs.logging.interceptor)
+    // hilt for DI
+    implementation(libs.hilt.android.v2511)
+
+    // Hilt Compiler dependency
+    kapt(libs.hilt.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
