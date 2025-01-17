@@ -60,7 +60,7 @@ dependencies {
     // OkHttp logging interceptor
     implementation (libs.logging.interceptor)
     // hilt for DI
-    implementation(libs.hilt.android.v2511)
+    implementation(libs.hilt.android)
 
     // Hilt Compiler dependency
     kapt(libs.hilt.compiler)

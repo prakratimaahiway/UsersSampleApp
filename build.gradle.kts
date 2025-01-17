@@ -6,3 +6,13 @@ plugins {
     id("com.google.dagger.hilt.android") version "2.51.1" apply false
 }
 
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath(libs.kotlin.gradle.plugin)
+    }
+}
+
