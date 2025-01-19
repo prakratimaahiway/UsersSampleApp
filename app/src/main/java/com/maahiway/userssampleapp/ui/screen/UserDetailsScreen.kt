@@ -41,8 +41,12 @@ fun UserDetailsScreen(
         }
         is UiState.Success ->
         {
-            val user = state.data as User
-            UserDetail(user)
+            val user = (state.data as? List<User>)?.firstOrNull()
+            if (user != null) {
+                UserDetail(user)
+            } else {
+                Text("No user found")
+            }
         }
         is UiState.Error -> {
             Text(text = "Error: ${state.message}", modifier = Modifier.fillMaxSize())

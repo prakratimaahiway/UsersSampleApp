@@ -42,10 +42,6 @@ class MainActivity : ComponentActivity() {
                             UserDetailsScreen(navController = navController, userId = userId)
                         }
                     }
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
                 }
             }
         }
