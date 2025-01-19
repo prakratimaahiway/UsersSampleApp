@@ -47,6 +47,8 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
@@ -56,14 +58,13 @@ dependencies {
     implementation (libs.retrofit)
     // Converter for JSON (e.g., Gson, Moshi, etc.)
     implementation (libs.converter.gson)
-
     // OkHttp logging interceptor
     implementation (libs.logging.interceptor)
     // hilt for DI
     implementation(libs.hilt.android)
-
     // Hilt Compiler dependency
     kapt(libs.hilt.compiler)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

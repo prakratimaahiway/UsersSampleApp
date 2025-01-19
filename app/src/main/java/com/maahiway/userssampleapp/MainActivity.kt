@@ -11,8 +11,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.maahiway.userssampleapp.ui.screen.SplashScreen
+import com.maahiway.userssampleapp.ui.screen.UserDetailsScreen
+import com.maahiway.userssampleapp.ui.screen.UserListScreen
 import com.maahiway.userssampleapp.ui.theme.UsersSampleAppTheme
-//test
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +28,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             UsersSampleAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "splash") {
+                        composable("splash") {
+                            SplashScreen(navController = navController)
+                        }
+                        composable("userList") {
+                            UserListScreen(navController = navController)
+                        }
+                        composable("userDetail/{userId}") { navBackStackEntry ->
+                            val userId =
+                                navBackStackEntry.arguments?.getString("userId")?.toInt() ?: 0
+                            UserDetailsScreen(navController = navController, userId = userId)
+                        }
+                    }
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)

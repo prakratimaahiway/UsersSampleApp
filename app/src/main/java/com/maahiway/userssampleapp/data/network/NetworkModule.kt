@@ -1,5 +1,6 @@
 package com.maahiway.userssampleapp.data.network
 
+import com.maahiway.userssampleapp.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,7 +19,7 @@ object NetworkModule {
     fun provideRetrofit(): Retrofit {
         val client = OkHttpClient.Builder().build()
         return Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .baseUrl(Constants.BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
