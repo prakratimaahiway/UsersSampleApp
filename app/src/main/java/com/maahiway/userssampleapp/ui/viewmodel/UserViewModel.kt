@@ -8,14 +8,16 @@ import androidx.lifecycle.viewModelScope
 import com.maahiway.userssampleapp.data.repository.UserRepository
 import com.maahiway.userssampleapp.ui.state.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class UserViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
-    private val _users = mutableStateOf<UiState>(UiState.Loading)
-    val users: State<UiState> = _users
+    private val _users = MutableStateFlow<UiState>(UiState.Loading)
+    val users: StateFlow<UiState> get() = _users
 
     init {
             getUsers()
@@ -23,12 +25,12 @@ class UserViewModel @Inject constructor(private val userRepository: UserReposito
 
     private fun getUsers() {
         viewModelScope.launch {
+            _users.value = UiState.Loading
             try {
-                _users.value = UiState.Loading
                 val userList = userRepository.getUser()
                 _users.value = UiState.Success(userList)
             } catch (e: Exception) {
-                _users.value = UiState.Error(e.message ?: "unknown error")
+                _users.value = UiState.Error(e.message ?: "Unknown error")
             }
         }
     }
