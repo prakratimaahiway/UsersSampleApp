@@ -64,7 +64,8 @@ dependencies {
     implementation(libs.hilt.android)
     // Hilt Compiler dependency
     kapt(libs.hilt.compiler)
-
+    //Room DB
+    implementation(libs.androidx.room.runtime)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
