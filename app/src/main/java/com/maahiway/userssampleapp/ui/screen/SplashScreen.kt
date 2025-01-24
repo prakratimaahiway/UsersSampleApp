@@ -16,7 +16,7 @@ import androidx.navigation.NavController
 fun SplashScreen(navController: NavController) {
     Handler(Looper.getMainLooper()).postDelayed({
         navController.navigate("userList") {
-            popUpTo("splash") { inclusive = true } // Clear splash screen after navigation
+            popUpTo("splash") { inclusive = true }
         }
     }, 3000)
 
