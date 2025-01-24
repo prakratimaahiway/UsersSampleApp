@@ -20,7 +20,7 @@ fun SplashScreen(navController: NavController) {
         }
     }, 3000)
 
-    // Splash UI
+
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
         CircularProgressIndicator()
         Text(text = "Loading...", fontSize = 24.sp, modifier = Modifier.align(Alignment.Center))
